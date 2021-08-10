@@ -1,4 +1,4 @@
-JMX Exporter
+JMX Exporter (Edit by Shuchang,Add Eureka scrape metrics)
 =====
 
 JMX to Prometheus exporter: a collector that can configurably scrape and

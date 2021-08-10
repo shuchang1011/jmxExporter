@@ -59,7 +59,6 @@ public class JmxCollector extends Collector implements Collector.Describable {
         String jmxUrl = "";
         String username = "";
         String password = "";
-        String clusterId = "";
         boolean ssl = false;
         boolean lowercaseOutputName;
         boolean lowercaseOutputLabelNames;

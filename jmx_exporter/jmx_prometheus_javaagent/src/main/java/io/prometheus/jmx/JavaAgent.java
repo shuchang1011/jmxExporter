@@ -37,11 +37,9 @@ public class JavaAgent {
             @Override
             public void run() {
                 try {
-                    LOGGER.info("eureka metric scrape agent is starting...");
                     String host = "0.0.0.0";
                     Config config = parseConfig(agentArgument, host);
                     new BuildInfoCollector().register();
-                    new EurekaInfoCollector(new File(config.file)).register();
                     new JmxCollector(new File(config.file)).register();
                     DefaultExports.initialize();
                     server = new HTTPServer(config.socket, CollectorRegistry.defaultRegistry, true);

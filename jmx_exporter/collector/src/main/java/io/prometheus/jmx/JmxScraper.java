@@ -50,20 +50,18 @@ class JmxScraper {
     private final String jmxUrl;
     private final String username;
     private final String password;
-    private final String clusterId;
     private final boolean ssl;
     private final List<ObjectName> whitelistObjectNames, blacklistObjectNames;
     private final JmxMBeanPropertyCache jmxMBeanPropertyCache;
     private final OptionalValueExtractor optionalValueExtractor = new OptionalValueExtractor();
 
-    public JmxScraper(String jmxUrl, String username, String password, String clusterId, boolean ssl,
+    public JmxScraper(String jmxUrl, String username, String password, boolean ssl,
                       List<ObjectName> whitelistObjectNames, List<ObjectName> blacklistObjectNames,
                       MBeanReceiver receiver, JmxMBeanPropertyCache jmxMBeanPropertyCache) {
         this.jmxUrl = jmxUrl;
         this.receiver = receiver;
         this.username = username;
         this.password = password;
-        this.clusterId = clusterId;
         this.ssl = ssl;
         this.whitelistObjectNames = whitelistObjectNames;
         this.blacklistObjectNames = blacklistObjectNames;
@@ -337,15 +335,15 @@ class JmxScraper {
       List<ObjectName> objectNames = new LinkedList<ObjectName>();
       objectNames.add(null);
       if (args.length >= 3){
-            new JmxScraper(args[0], args[1], args[2], "test", false, objectNames, new LinkedList<ObjectName>(),
+            new JmxScraper(args[0], args[1], args[2], false, objectNames, new LinkedList<ObjectName>(),
                     new StdoutWriter(), new JmxMBeanPropertyCache()).doScrape();
         }
       else if (args.length > 0){
-          new JmxScraper(args[0], "", "", "test", false, objectNames, new LinkedList<ObjectName>(),
+          new JmxScraper(args[0], "", "", false, objectNames, new LinkedList<ObjectName>(),
                   new StdoutWriter(), new JmxMBeanPropertyCache()).doScrape();
       }
       else {
-          new JmxScraper("", "", "", "test", false, objectNames, new LinkedList<ObjectName>(),
+          new JmxScraper("", "", "", false, objectNames, new LinkedList<ObjectName>(),
                   new StdoutWriter(), new JmxMBeanPropertyCache()).doScrape();
       }
     }

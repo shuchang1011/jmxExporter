@@ -1,6 +1,6 @@
 package io.prometheus.jmx;
 
-import com.alibaba.fastjson.JSON;
+
 import io.prometheus.client.Collector;
 import io.prometheus.client.Counter;
 import org.yaml.snakeyaml.Yaml;
@@ -549,7 +549,7 @@ public class JmxCollector extends Collector implements Collector.Describable {
 
         MatchedRulesCache.StalenessTracker stalenessTracker = new MatchedRulesCache.StalenessTracker();
         Receiver receiver = new Receiver(config, stalenessTracker);
-        JmxScraper scraper = new JmxScraper(config.jmxUrl, config.username, config.password, config.clusterId, config.ssl,
+        JmxScraper scraper = new JmxScraper(config.jmxUrl, config.username, config.password, config.ssl,
                 config.whitelistObjectNames, config.blacklistObjectNames, receiver, jmxMBeanPropertyCache);
         long start = System.nanoTime();
         double error = 0;

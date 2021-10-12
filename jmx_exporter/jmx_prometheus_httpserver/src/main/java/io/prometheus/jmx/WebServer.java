@@ -27,7 +27,6 @@ public class WebServer {
      }
 
      new BuildInfoCollector().register();
-     new EurekaInfoCollector(new File(args[1])).register();
      new JmxCollector(new File(args[1])).register();
      new HTTPServer(socket, CollectorRegistry.defaultRegistry);
    }

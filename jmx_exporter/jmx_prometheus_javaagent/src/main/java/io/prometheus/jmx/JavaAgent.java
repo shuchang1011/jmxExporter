@@ -43,7 +43,9 @@ public class JavaAgent {
                     new BuildInfoCollector().register();
                     new EurekaInfoCollector(new File(config.file)).register();
                     new JmxCollector(new File(config.file)).register();
+                    //初始化默认Exporter（注册常用的机器性能指标采集器）
                     DefaultExports.initialize();
+                    //基于http请求的方式连接MBeanServer，通过该server来操作MBean对象
                     server = new HTTPServer(config.socket, CollectorRegistry.defaultRegistry, true);
                 } catch (IllegalArgumentException e) {
                     System.err.println("Usage: -javaagent:/path/to/JavaAgent.jar=[host:]<port>:<yaml configuration file> " + e.getMessage());

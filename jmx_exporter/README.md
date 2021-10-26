@@ -122,7 +122,7 @@ You can start the jmx's scraper in standalone mode in order to debug what is cal
 git clone https://github.com/prometheus/jmx_exporter.git
 cd jmx_exporter
 mvn package
-java -cp collector/target/collector*.jar  io.prometheus.jmx.JmxScraper  service:jmx:rmi:your_url
+java -cp collector/target/collector*.jar  JmxScraper  service:jmx:rmi:your_url
 ```
 
 To get finer logs (including the duration of each jmx call),

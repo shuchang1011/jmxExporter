@@ -531,9 +531,11 @@ public class JmxCollector extends Collector implements Collector.Describable {
             }
 
             //append public labels
-            for (String key : config.publicLabels.keySet()) {
-                matchedRule.labelNames.add(key);
-                matchedRule.labelValues.add(config.publicLabels.get(key));
+            if(config.publicLabels != null) {
+                for (String key : config.publicLabels.keySet()) {
+                    matchedRule.labelNames.add(key);
+                    matchedRule.labelValues.add(config.publicLabels.get(key));
+                }
             }
             // Add to samples.
             LOGGER.fine("add metric sample: " + matchedRule.name + " " + matchedRule.labelNames + " " + matchedRule.labelValues + " " + value.doubleValue());
